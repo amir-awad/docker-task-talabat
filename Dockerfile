@@ -1,11 +1,8 @@
+# Use the official PostgreSQL image from Docker Hub
 FROM postgres:latest
 
-RUN mkdir /app
+ENV POSTGRES_USER=myuser
+ENV POSTGRES_PASSWORD=mypassword
+ENV POSTGRES_DB=mydatabase
 
-WORKDIR /app
-
-COPY requirements.txt /app/requirements.txt
-
-COPY . /app/
-
-CMD 'python manage.py runserver 5432:5432'
+EXPOSE 5432
